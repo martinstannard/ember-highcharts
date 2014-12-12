@@ -5,6 +5,7 @@ export default Ember.Component.extend(HighchartsThemeMixin, {
     classNames: ['highcharts-wrapper'],
     content: undefined,
     chartOptions: undefined,
+    optionsChanged: undefined,
     chart: null,
 
     buildOptions: Em.computed('chartOptions', 'content.@each.isLoaded', function() {
@@ -43,6 +44,10 @@ export default Ember.Component.extend(HighchartsThemeMixin, {
                 return chart.addSeries(series);
             }
         });
+    }),
+
+    optionsDidChange: Em.observer('optionsChanged', function() {
+        this.draw();
     }),
 
     drawLater: function() {
