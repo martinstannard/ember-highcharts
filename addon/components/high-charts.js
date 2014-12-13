@@ -47,7 +47,7 @@ export default Ember.Component.extend(HighchartsThemeMixin, {
     }),
 
     optionsDidChange: Em.observer('optionsChanged', function() {
-        this.draw();
+        this.drawLater();
     }),
 
     drawLater: function() {
