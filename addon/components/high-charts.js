@@ -62,6 +62,8 @@ export default Ember.Component.extend(HighchartsThemeMixin, {
 
   _destroyChart: (function() {
     this._super();
-    this.get('chart').destroy();
+    if (this.get('chart')) {
+        this.get('chart').destroy();
+    }
   }).on('willDestroyElement')
 });
